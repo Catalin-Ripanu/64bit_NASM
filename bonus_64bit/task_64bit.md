@@ -1,20 +1,18 @@
-# Task Bonus - Assembly 64bit
+# Bonus Task - Assembly 64bit
 
-Biju intra intr-una din camerele din spatele lui Steve. Gaseste un plic pe care scrie "accepta prezentul".
+Biju enters one of the rooms behind Steve. He finds an envelope on which it says "accept the present".
 
-Task-ul implementarea unei functii care face intercalarea a 2 vectori `void intertwine(int *v1, int n1, int *v2, int n2, int *v);`, in assembly pe 64 de biti.
+The task is implementing a function that intertwines 2 vectors `void intertwine(int *v1, int n1, int *v2, int n2, int *v);`, in 64-bit assembly.
 
-Prin intercalare se intelege crearea unui nou vector, care contine, alternativ, elementele celor 2 vectori.
+By intertwining we mean creating a new vector, which contains, alternately, the elements of the 2 vectors.
 
-## Exemplu
+## Example
 - v1 = 1 1 1 1
 - v2 = 2 2
-- intercalare: 1 2 1 2 1 1
+- intertwining: 1 2 1 2 1 1
 
-## Atentie
+## Attention
+If one vector is longer than the other, its elements will be placed at the end of the resulting vector.
 
-Daca un vector este mai lung decat celalalt, elementele lui vor fi puse la finalul vectorului rezultat.
-
-## Punctare
-
-Acest task valoreaza 10 puncte, dintre care un punct e pentru descrierea implementarii si coding style.
+## Scoring
+This task is worth 10 points, of which one point is for implementation description and coding style.
