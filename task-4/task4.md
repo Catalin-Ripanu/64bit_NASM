@@ -1,26 +1,24 @@
-## Task 4 - Conturile lui Biju
+## Task 4 - Biju's Accounts
 
-Dupa a 4-a usa, Biju este intampinat de Thoralf Skolem, cel care a definit pentru prima data functiile recursive. Acesta ii da lui Biju contul bancar al lui Tzanca Uraganu, intr-o forma dubioasa, si-i cere sa scrie mai multe functii recursive, pentru a afla cati bani are Tzanca in cont.
+After the 4th door, Biju is greeted by Thoralf Skolem, who first defined recursive functions. He gives Biju Tzanca Uraganu's bank account, in a dubious form, and asks him to write several recursive functions to find out how much money Tzanca has in his account.
 
-### Cerinţă:
-
-Va trebui să implementaţi 3 funcţii recursive (lui Biju îi place recursivitatea mutuală) care vor evalua o expresie primită ca parametru:
-
+### Requirement:
+You will have to implement 3 recursive functions (Biju likes mutual recursion) that will evaluate an expression received as a parameter:
 - `expression(char *p, int *i)`
-    - evaluează expresii de tipul `term + term` sau `term - term`
+    - evaluates expressions of the type `term + term` or `term - term`
 - `term(char *p, int *i)`
-    - evaluează expresii de tipul `factor * factor` sau `factor / factor`
+    - evaluates expressions of the type `factor * factor` or `factor / factor`
 - `factor(char *p, int *i)`
-    - evaluează expresii de tipul `(expression)` sau `number`, unde număr este o secvenţă de cifre
+    - evaluates expressions of the type `(expression)` or `number`, where number is a sequence of digits
 
-### Precizări:
-- `p` este şirul de caractere
-- `i` este poziţia actuală în şirul de caratere (atenţie, acesta va trebui actualizat în funcţii)
-- numerele vor fi întregi pozitive, însă în urma operaţiilor pot apărea numere negative
-- împărţirile vor fi făcute pe numere întregi
-- rezultatele se încadrează pe tipul `int`
-- expresiile primite vor fi corecte
-- pe scurt, recursivitatea mutuală presupune definirea a doua funcţii una în funcţie de cealaltă. Ilsutrativă în acest sens este următoarea secvenţă de cod:
+### Specifications:
+- `p` is the character string
+- `i` is the current position in the character string (attention, this will need to be updated in functions)
+- numbers will be positive integers, but as a result of operations negative numbers may appear
+- divisions will be done on integers
+- results fit in the `int` type
+- received expressions will be correct
+- in short, mutual recursion involves defining two functions in terms of each other. Illustrative in this sense is the following code sequence:
 ```C
 function1()
 {    
@@ -28,7 +26,6 @@ function1()
     function2();
     // do something
 }
-
 function2()
 {
     // do something 
@@ -36,19 +33,17 @@ function2()
     // do something
 }
 ```
+- for more details related to mutual recursion consult [this link](https://en.wikipedia.org/wiki/Mutual_recursion).
+- **any solution that does not use mutual recursion will not be scored**
 
-- pentru mai multe detalii legate de recursivitatea mutuală consultaţi [acest link](https://en.wikipedia.org/wiki/Mutual_recursion).
-- **orice rezolvare care nu foloseşte recursivitate mutuală nu va fi punctată**
-
-### Exemplu de test:
-
+### Test Example:
 | `test.in `     | `test.out` |
 |----------------|------------|
 |```15+8*2000``` | ```16015```|
 
 ### Hint:
-- Funcţiile pe care trebuie să le implementaţi se vor apela între ele
-- Pentru împărţiri cu semn: [cdq](https://stackoverflow.com/questions/36464879/when-and-why-do-we-sign-extend-and-use-cdq-with-mul-div)
+- The functions you need to implement will call each other
+- For signed divisions: [cdq](https://stackoverflow.com/questions/36464879/when-and-why-do-we-sign-extend-and-use-cdq-with-mul-div)
 
-### Punctare:
-- Task-ul are 25 de puncte, dintre care 2 puncte pentru coding-style si detalierea implementarii.
+### Scoring:
+- The task has 25 points, of which 2 points are for coding-style and implementation details.
