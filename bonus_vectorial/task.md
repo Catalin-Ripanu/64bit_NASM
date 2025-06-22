@@ -1,48 +1,48 @@
-# Task Bonus - Instructiuni Vectoriale - SSE, AVX
+# Bonus Task - Vectorial Instructions - SSE, AVX
 
-Biju intra intr-una din camerele din spatele lui Steve. Gaseste un plic pe care scrie "optimizeaza".
+Biju enters one of the rooms behind Steve. He finds an envelope on which it says "optimize".
 
-## Momentul de Teorie
+## Theory Moment
 
-Sistemele de calcul pot fi de 4 tipuri, în functie de câte instrucţiuni se execută în acelaşi timp şi câte date se prelucrează în acelasi timp: SISD, SIMD, MISD, MIMD.
+Computing systems can be of 4 types, depending on how many instructions are executed at the same time and how many data are processed at the same time: SISD, SIMD, MISD, MIMD.
 
-- SISD (single instruction, single data) este tipul folosit până acum de voi: o singură instrucţiune se execută în acelaşi timp şi se lucrează pe o singură dată în acelaşi timp.
-- MIMD (multiple instructions, multiple data): subiectul mai multor materii din anii următori (APD, SO, ASC, APP). În acest tip de arhitectură, se pot executa mai multe instrucţiuni simultan, care pot opera pe mai multe date simultan, folosind thread-uri (fire de execuţie).
-- SIMD (single instruction, multiple data): aceeaşi instrucţiune este executată pe mai multe date simultan. Acest tip este subiectul unei bucati importante din cursul de ASC.
-- MISD (multiple instructions, single data): tip foarte rar întâlnit.
+- SISD (single instruction, single data) is the type used by you so far: a single instruction is executed at the same time and work is done on a single data at the same time.
+- MIMD (multiple instructions, multiple data): the subject of several courses in the following years (APD, SO, ASC, APP). In this type of architecture, multiple instructions can be executed simultaneously, which can operate on multiple data simultaneously, using threads (execution threads).
+- SIMD (single instruction, multiple data): the same instruction is executed on multiple data simultaneously. This type is the subject of an important part of the ASC course.
+- MISD (multiple instructions, single data): very rarely encountered type.
 
-Procesoarele moderne sunt de tip MIMD, întrucât au mai multe nuclee, care la rândul lor pot avea unul sau mai multe thread-uri. Totuşi, aceste procesoare moderne au implementate şi instrucţiuni tip SIMD, care sunt scopul acestui task bonus.
+Modern processors are MIMD type, since they have multiple cores, which in turn can have one or more threads. However, these modern processors also have implemented SIMD type instructions, which are the purpose of this bonus task.
 
-Instructiunile SIMD, numite si instructiuni vectoriale, sunt [MMX](https://en.wikipedia.org/wiki/MMX_(instruction_set)), [SSE](https://en.wikipedia.org/wiki/Streaming_SIMD_Extensions) şi [AVX](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions). MMX este prima variantă de set de instrucţiuni de tip SIMD implementată pe procesoarele Intel, începând cu Intel Pentium P5. SSE (Streaming SIMD Extensions) si AVX (Advanced Vector Extension) sunt variante îmbunătăţite ale instrucţiunilor MMX. Toate seturile de instrucţiuni sunt folosite pentru operaţii pe vectori, de unde si denumirea de instructiuni vectoriale.
+SIMD instructions, also called vectorial instructions, are [MMX](https://en.wikipedia.org/wiki/MMX_(instruction_set)), [SSE](https://en.wikipedia.org/wiki/Streaming_SIMD_Extensions) and [AVX](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions). MMX is the first variant of SIMD type instruction set implemented on Intel processors, starting with Intel Pentium P5. SSE (Streaming SIMD Extensions) and AVX (Advanced Vector Extension) are improved variants of MMX instructions. All instruction sets are used for operations on vectors, hence the name vectorial instructions.
 
-Să presupunem că vrem să adunăm 2 vectori a câte 8 elemente fiecare, de tip int. Până acum, s-ar fi folosit o bucla for şi s-ar fi adunat element cu element. Instructiunile SIMD ne permit să efectuăm toate cele 8 adunări, simultan, folosind doar o instructiune de AVX2, numita VPADDD, sau 2 instructiuni de SSE2/AVX. Diferenta principala dintre seturile de instructiuni MMX, SSE si AVX este numarul de biti care pot fi prelucrati in acelasi timp, AVX512 fiind cel mai puternic set de instructiuni, in acest sens, putand prelucra 512 biti in acelasi timp.
+Let's suppose we want to add 2 vectors of 8 elements each, of int type. Until now, a for loop would have been used and elements would have been added one by one. SIMD instructions allow us to perform all 8 additions, simultaneously, using only one AVX2 instruction, called VPADDD, or 2 SSE2/AVX instructions. The main difference between the MMX, SSE and AVX instruction sets is the number of bits that can be processed at the same time, AVX512 being the most powerful instruction set, in this sense, being able to process 512 bits at the same time.
 
-Pentru a putea realiza aceste operatii pe vectori, instructiunile SIMD folosesc niste registre speciale: mm in cazul MMX, xmm in cazul SSE si AVX, ymm in cazul AVX2 si zmm in cazul AVX512. 
+To be able to perform these operations on vectors, SIMD instructions use special registers: mm in the case of MMX, xmm in the case of SSE and AVX, ymm in the case of AVX2 and zmm in the case of AVX512.
 
-## Cerinta
+## Requirement
 
-Vi se cere sa implementati o functie in assembly pe 64 de biti, `vectorial_ops`, care va primi un scalar, **s**, 3 vectori, **A**, **B** si **C**, si dimensiune vectorilor, **n**, si va realiza operatia `D = s * A + B .* C`, unde `.*` este inmultirea element cu element a 2 vectori (`[1, 2, 3] .* [4, 5, 6] = [1 * 4, 2 * 5, 3 * 6] = [4, 10, 18]`).
+You are asked to implement a function in 64-bit assembly, `vectorial_ops`, which will receive a scalar, **s**, 3 vectors, **A**, **B** and **C**, and the dimension of the vectors, **n**, and will perform the operation `D = s * A + B .* C`, where `.*` is the element-wise multiplication of 2 vectors (`[1, 2, 3] .* [4, 5, 6] = [1 * 4, 2 * 5, 3 * 6] = [4, 10, 18]`).
 
-Functia are urmatorul antet:
+The function has the following header:
 
 `void vectorial_ops(int s, int A[], int B[], int C[], int n, int D[])`
 
-## Observatii
+## Observations
 
-- Puteti folosi oricare set de instructiuni SIMD pentru realizarea acestui task, in functie de ce aveti disponibil pe masina locala. Pentru a afla ce capabilitati are procesorul vostru, folositi comanda `cat /proc/cpuinfo`.
+- You can use any SIMD instruction set to accomplish this task, depending on what you have available on your local machine. To find out what capabilities your processor has, use the command `cat /proc/cpuinfo`.
 
-- Se garanteaza ca **n** este multiplu de 16.
+- It is guaranteed that **n** is a multiple of 16.
 
-- Se garanteaza ca rezultatul oricarei inmultiri incape intr-un int (32 de biti).
+- It is guaranteed that the result of any multiplication fits in an int (32 bits).
 
-- Daca folositi AVX pentru rezolvarea temei, veti primi 0 puncte pe VMchecker, pentru ca masina pe care ruleaza checker-ul nu are suport pentru AVX.
-Mentionati in comentarii sau in README faptul ca ati folosit AVX, sa stim ca e nevoie de verificare manuala.
+- If you use AVX to solve the homework, you will receive 0 points on VMchecker, because the machine running the checker does not have AVX support.
+Mention in comments or in README that you used AVX, so we know manual verification is needed.
 
-## Punctare
+## Scoring
 
-Acest task valoreaza 15 puncte, dintre care 3 se acorda pentru coding-style si descrierea implementarii.
+This task is worth 15 points, of which 3 are awarded for coding-style and implementation description.
 
-## Resurse utile
+## Useful Resources
 
 https://docs.oracle.com/cd/E36784_01/html/E36859/gntae.html
 
