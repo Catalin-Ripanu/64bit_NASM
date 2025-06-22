@@ -1,17 +1,17 @@
-# Task Bonus - Instructiuni speciale - CPUID
+# Bonus Task - Special Instructions - CPUID
 
-Biju intra intr-una din camerele din spatele lui Steve. Gaseste un plic pe care scrie "descopera".
+Biju enters one of the rooms behind Steve. He finds an envelope on which it says "discover".
 
-CPUID este o instructiune speciala a procesoarelor care folosesc arhitectura x86, sau derivate, care permite aflarea unor informatii despre procesorul pe care se executa aceasta instructiune. Instructiunea cpuid nu primeste parametri, ci se executa in functie de continutul registrului eax si, in anumite situatii, a registrului ecx. Informatiile date ca raspuns sunt stocate in registrele eax, ebx, ecx, edx. Semnificatia rezultatelor este documentata in specificatia [Intel](https://web.archive.org/web/20120625025623/http://www.intel.com/Assets/PDF/appnote/241618.pdf).
+CPUID is a special instruction of processors that use the x86 architecture, or derivatives, which allows finding out information about the processor on which this instruction is executed. The cpuid instruction does not receive parameters, but is executed based on the content of the eax register and, in certain situations, the ecx register. The information given as a response is stored in the eax, ebx, ecx, edx registers. The meaning of the results is documented in the [Intel](https://web.archive.org/web/20120625025623/http://www.intel.com/Assets/PDF/appnote/241618.pdf) specification.
 
-Vi se cere sa aflati, folosind cpuid, urmatoarele informatii despre procesorul vostru:
- - Manufacturer ID-ul (3p)
- - daca este suportat setul de instructiuni [VMX](https://en.wikipedia.org/wiki/X86_virtualization#Intel_virtualization_(VT-x)) (1p)
- - daca este suportata instructiunea [RDRAND](https://en.wikipedia.org/wiki/RDRAND) (1p)
- - daca este suportat setul de instructiuni [AVX](https://en.wikipedia.org/wiki/Software_Guard_Extensions) (1p)
- - dimensiunea liniei de cache de nivel 2 (1p)
- - dimensiunea cache-ului de nivel 2, **pentru un singur nucleu** (1p)
+You are asked to find out, using cpuid, the following information about your processor:
+ - Manufacturer ID (3p)
+ - if the [VMX](https://en.wikipedia.org/wiki/X86_virtualization#Intel_virtualization_(VT-x)) instruction set is supported (1p)
+ - if the [RDRAND](https://en.wikipedia.org/wiki/RDRAND) instruction is supported (1p)
+ - if the [AVX](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) instruction set is supported (1p)
+ - level 2 cache line size (1p)
+ - level 2 cache size, **for a single core** (1p)
 
-Implementarea se va face in fisierul bonus_cpuid.asm.
+The implementation will be done in the bonus_cpuid.asm file.
 
-Ultimele 2 puncte ale task-ului se vor acorda pentru descrierea implementarii si coding-style.
+The last 2 points of the task will be awarded for implementation description and coding-style.
