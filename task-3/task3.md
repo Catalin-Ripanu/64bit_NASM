@@ -1,27 +1,27 @@
 # Task 3
 
-Dupa a 3-a usa, Biju e intampinat de John von Neumann, inventatorul Merge Sort, printre altele. John ii spune lui Biju ca are probleme in a intelege versurile lui Salam, si ii cere sa scrie 2 functii care sa-l ajute in descifrarea lor.
+After the 3rd door, Biju is greeted by John von Neumann, the inventor of Merge Sort, among other things. John tells Biju that he has problems understanding Salam's lyrics, and asks him to write 2 functions to help him decipher them.
 
-Pentru acest task veti avea de separat un text in cuvinte dupa niste delimitatori si, dupa aceea, sa sortati aceste cuvinte folosind functia qsort. Sortarea se va face intai dupa lungimea cuvintelor si in cazul egalitatii se va sorta lexicografic.
+For this task you will have to separate a text into words according to some delimiters and, after that, sort these words using the qsort function. The sorting will be done first by word length and in case of equality it will be sorted lexicographically.
 
-Va trebui sa implementati 2 functii cu semnaturile `void get_words(char *s, char **words, int number_of_words);` si `void sort(char **words, int number_of_words, int size);` din fisierul `task3.asm`. Functia get_words primeste ca parametri textul, un vector de stringuri in care va trebui sa salvati cuvintele pe care ulterior le veti sorta si numarul de cuvinte. Functia sort va primi vectorul de cuvinte, numarul de cuvinte si dimensiunea unui cuvant.
+You will have to implement 2 functions with the signatures `void get_words(char *s, char **words, int number_of_words);` and `void sort(char **words, int number_of_words, int size);` from the file `task3.asm`. The get_words function receives as parameters the text, a vector of strings in which you will have to save the words that you will later sort and the number of words. The sort function will receive the vector of words, the number of words and the size of a word.
 
-## Precizări:
-- lungimea textului este mai mica decat 1000;
-- vectorul de cuvinte va avea maxim 100 de cuvine a 100 de caractere fiecare;
-- delimitatorii pe care trebuie sa ii luati in calcul sunt: " ,.\n"
-- nu aveti voie sa folositi alta metoda de sortare in afara de qsort. In cazul in care veti folosi alta metoda punctajul pe acest task se va pierde.
+## Specifications:
+- the text length is less than 1000;
+- the word vector will have maximum 100 words of 100 characters each;
+- the delimiters you need to take into account are: " ,.\n"
+- you are not allowed to use any other sorting method besides qsort. In case you use another method, the score for this task will be lost.
 
-## Exemplu
+## Example
 ```
 number_of_words: 9
 s: "Ana are 27 de mere, si 32 de pere."
-dupa apelul get_words: words = ["Ana", "are", "27", "de", "mere", "si", "32", "de", "pere"]
-dupa apelul sort: words = ["27", "32", "de", "de", "si", "Ana", "are", "mere", "pere"]
+after calling get_words: words = ["Ana", "are", "27", "de", "mere", "si", "32", "de", "pere"]
+after calling sort: words = ["27", "32", "de", "de", "si", "Ana", "are", "mere", "pere"]
 ```
 
 ## Hint:
-- pentru mai multe informatii despre qsort puteti accesa linkul: https://man7.org/linux/man-pages/man3/qsort.3.html
+- for more information about qsort you can access the link: https://man7.org/linux/man-pages/man3/qsort.3.html
 
-## Punctare
-- Task-ul are 25 de puncte, dintre care un punct pentru coding-style si detalierea implementarii.
+## Scoring
+- The task has 25 points, of which one point is for coding-style and implementation details.
