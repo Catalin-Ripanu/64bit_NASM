@@ -1,36 +1,34 @@
-# Task Bonus - Assembly 64bit
+# Bonus Task - Assembly 32bit AT&T
 
-Biju intra intr-una din camerele din spatele lui Steve. Gaseste un plic pe care scrie "accepta diferitul".
+Biju enters one of the rooms behind Steve. He finds an envelope on which it says "accept the different".
 
-Task-ul implementarea unei functii care aduna 2 vectori de dimensiune `n`, apoi scade din vectorul rezultat 3 numere, definite prin `#define` (`*_VALUE`), in `positions.h`, de pe pozitiile indicate tot in `positions.h` (`*_POSITION`), in assembly pe 32 de biti, folosind sintaxa AT&T. Pozitiile trebuie scalate cu dimensiunea vectorului, ele fiind definite pentru un vector de dimensiune 10.
+The task is implementing a function that adds 2 vectors of size `n`, then subtracts from the resulting vector 3 numbers, defined through `#define` (`*_VALUE`), in `positions.h`, from the positions indicated also in `positions.h` (`*_POSITION`), in 32-bit assembly, using AT&T syntax. The positions must be scaled with the vector size, as they are defined for a vector of size 10.
 
-Sintaxa AT&T este a 2-a sintaxa in care poate fi scris cod de asamblare pentru arhitectura x86. Aceasta sintaxa este singura inteleasa de asamblurul GNU, GAS si este singura folosita in nucleul Linux. Ca o conventie, fisierele care folosesc sintaxa AT&T au extensia `.S`, in timp ce fisierele cu sintaxa Intel folosesc extensia `.asm`. De asemenea, fisierele cu sintaxa AT&T pot folosi directivele de preprocesare ale GCC, precum `#define` si `#include`.
+AT&T syntax is the 2nd syntax in which assembly code can be written for the x86 architecture. This syntax is the only one understood by the GNU assembler, GAS and is the only one used in the Linux kernel. As a convention, files that use AT&T syntax have the `.S` extension, while files with Intel syntax use the `.asm` extension. Also, files with AT&T syntax can use GCC preprocessing directives, such as `#define` and `#include`.
 
-Diferentele intre AT&T si Intel sunt importante, mai ales la modul in care se foloseste adresarea si la ordinea argumentelor instructiunilor de assembly. Pentru detalii, consultati documentul din sectiunea `Resurse utile` a acestui document.
+The differences between AT&T and Intel are important, especially in how addressing is used and the order of assembly instruction arguments. For details, consult the document from the `Useful Resources` section of this document.
 
-## Exemplu
+## Example
 - n : 5
 - v1: 1 2 3 4 5
 - v2: 10 9 8 7 6
 
-### Rezultat dupa adunare:
+### Result after addition:
 11 11 11 11 11
 
-### Numerele din `positions.h`:
-- valoare: 10, pozitie: 2, pozitie scalata pentru n = 5: 1
-- valoare: 127, pozitie: 4, pozitie scalata pentru n = 5: 2
-- valoare: 21, pozitie: 7, pozitie scalata pentru n = 5: 3
+### Numbers from `positions.h`:
+- value: 10, position: 2, scaled position for n = 5: 1
+- value: 127, position: 4, scaled position for n = 5: 2
+- value: 21, position: 7, scaled position for n = 5: 3
 
-### Vectorul final:
+### Final vector:
 11 1 -116 -10 11
 
-## Resurse utile
+## Useful Resources
 - https://imada.sdu.dk/~kslarsen/dm546/Material/IntelnATT.htm
 
-## Punctare
-
-Acest task valoreaza 10 puncte, dintre care un punct e pentru descrierea implementarii si coding style.
+## Scoring
+This task is worth 10 points, of which one point is for implementation description and coding style.
 
 ## Hint
-
-Va recomandam sa folositi functionalitatea `macro` a limbajului de asamblare pentru bucati de cod care se repeta.
+We recommend using the `macro` functionality of the assembly language for code pieces that repeat.
