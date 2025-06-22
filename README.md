@@ -1,3 +1,1 @@
-# HW3_IOCLA
-
-Another Assembly homework. This time, 64 bit registers are being used too.
+Another Assembly practice. This time, 64-bit registers are also being used.
